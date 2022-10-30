@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/lector-de-barras.css">
+</head>
+<body>
+    <div id="container">
+        <header id="header">
+            <navbar class="navbar">
+            <img src="/img/logo.png" alt="LOGO" class="logo">
+                <ul class="navbar-list">
+                    <li> <a href="/inicio">Inicio</a> </li>
+                    <li> <a href="/">Estadisticas</a> </li>
+                    <li> <a href="/facturas">Facturas</a> </li>
+                </ul>
+            </navbar>
+        </header>
+        
+        <div class="content">
+
+            <section class="left-data">
+                
+                <div class="list-items">
+                    <h2>¿ Como se usa ?</h2>
+                    <img src="/img/logo.png" alt="LOGO" class="list-items-logo">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus a itaque, magnam nesciunt commodi reiciendis sequi amet velit iure ratione sit, consequuntur hic veniam non, distinctio fuga quibusdam sunt voluptatem? lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit natus cupiditate beatae, eius repellat ea blanditiis. Cumque velit quasi vel, veniam nulla exercitationem adipisci magni odio optio quo a ullam! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem, dolor unde. Quisquam, ipsa fugiat iure enim blanditiis quis hic aliquid sunt cum, libero, consectetur delectus? Eius iure fugit amet at. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto reprehenderit illo consequatur ipsa, modi amet magnam rem fuga dignissimos vitae quis expedita a corporis architecto non beatae doloremque voluptatem dicta. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui eos quibusdam animi dolorum, molestias fugit similique aperiam enim, totam sapiente dolor quas quam ratione adipisci nesciunt atque cum minima sit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam officiis, laudantium reprehenderit voluptatem repellendus adipisci quasi omnis modi porro officia est numquam perferendis. Suscipit libero exercitationem eveniet, ex consequuntur eos! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita quaerat hic voluptatem itaque error harum delectus perferendis culpa cumque iusto, doloribus at vero, vitae dolorem voluptatum quisquam assumenda nam inventore! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum illo doloribus minus veniam blanditiis, quo, sed perspiciatis tempore nihil assumenda praesentium. Id, magnam. Esse iure fugit dolor ipsum? Exercitationem, iure. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores eveniet vero at inventore incidunt odit, saepe tempora error sequi quibusdam soluta cumque aliquid dolor, vitae, obcaecati ab dicta amet beatae. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet nisi maiores quam obcaecati ea ratione impedit tenetur ipsa eligendi unde architecto, saepe est modi atque expedita laboriosam autem a nostrum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit, magni eligendi magnam aspernatur laboriosam nisi perferendis iure saepe voluptatibus, cupiditate dolore, provident ad non? Dignissimos modi dolorem voluptas nemo inventore.</p>
+                </div>
+                <form id="enviar" method="POST" action="/barcodePost">
+
+                    <section class="titulo_form">
+                        <a href="/inicio">E.E.S.N°5</a>
+                        <img width="30" src="/img/logo2.png">
+                    </section>
+                   
+                    <input type="text" name="alumno" placeholder=" Alumno" required>
+                    <input type="text" name="docente" placeholder=" Docente" required>
+                  <div class="seleccion">
+                    <select name = "especialidad_op" required>
+                        <option>- -</option>
+                        <option>Informatica</option>
+                        <option>Turismo</option>
+                        <option>Alimentos</option>
+                        <option>Ciclo Basico</option>
+                    </select>
+                  </div>  
+                  <div class="seleccion">
+                    <select name = "year_op" required>
+                        <option>- -</option>
+                        <option>1 ro</option>
+                        <option>2 do</option>
+                        <option>3 ro</option>
+                        <option>4 to</option>
+                        <option>5 to</option>
+                        <option>6 to</option>
+                        <option>7 mo</option>
+                    </select>
+                  </div>
+                  <div class="seleccion">
+                    <select name = "year_div_op">
+                        <option>- -</option>
+                        <option>Primera</option>
+                        <option>Segunda</option>
+                        <option>Tercera</option>
+                        <option>Cuarta</option>
+                        <option>Quinta</option>
+                        <option>Sexta</option>
+                        <option>Septima</option>
+                    </select>
+                  </div>
+
+                  <section class="form_botton">
+                    <input type="submit" name="submit_form" value="Enviar">
+                    <input type="reset" name="reset_form" value="Borrar">
+                  </section>
+            
+                </form>
+
+            </section>
+        
+        </div>
+    
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <% if (status === 'error') { %>
+    
+        <script>
+            function Error() {
+                Swal.fire({
+                 title: 'ERROR',
+                 text: 'CREDENCIONALES INCORRECTAS',
+                 icon: 'error'
+             });
+            }
+
+            Error();
+        </script>
+
+    <% } %>
+</body>
+</html>
