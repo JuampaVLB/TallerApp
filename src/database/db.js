@@ -6,8 +6,9 @@ const password = 'kHO8UFyKzm7LmDC5';
 
 const dbname = 'escuela';
 
-const uri = 'mongodb://localhost/escuela';
+const uri = 'mongodb://mongo:7JJbDsfVbnb7mGSmS1mm@containers-us-west-112.railway.app:6527';
 
+// mongodb://localhost/escuela
 // `mongodb+srv://${user}:${password}@cluster0.ktoxf8e.mongodb.net/${dbname}`
 
 
