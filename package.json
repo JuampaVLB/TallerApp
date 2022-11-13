@@ -10,6 +10,7 @@
   "author": "JuampaVLL",
   "license": "ISC",
   "dependencies": {
+    "animate.css": "^4.1.1",
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.2",
     "ejs": "^3.1.8",

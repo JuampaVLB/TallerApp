@@ -66,6 +66,35 @@
 	text-decoration: none;
 	color: #000;
 	margin-left: .5rem;
+    transition: .2s;
+    font-weight: bold;
+}
+
+#container #header .navbar .navbar-list .active {
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list li a:hover {
+	transition: .2s;
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list .mostrar:hover .submenu{
+	display:flex;
+}
+
+#container #header .navbar .navbar-list .submenu {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+    position:absolute;
+    overflow:hidden;
+	background-color:#fff;
+	display:none;
+    width:200px;
+	height: 100px;
+	background: white;
+	box-shadow: 2px 1px 5px black;
 }
 
 
@@ -322,7 +351,7 @@
 .buttons {
     border-top: 5px dotted rgba(0,0,0, .2);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     height: 15%;
     padding-top: 15px;
@@ -361,9 +390,8 @@
 }
 
 
-.buttons .download-img img{
-    width: 40px;
-    height: 40px;
+.buttons .download-img {
+    cursor: pointer;
 }
 
 @media (max-width: 1300px) {

@@ -14,19 +14,7 @@ const storage = multer.diskStorage({
         
         let nameFile = file.originalname;
 
-        let nameParam = req.body.herramienta;
-
-        let indice = nameFile.indexOf(".");
-
-        let extraida = nameFile.substring(indice, nameFile.length);
-
-        if(nameParam == '') {
-
-            nameParam = param;
-            
-        }
-
-        cb(null, `${nameParam}.png`);
+        cb(null, `${param}.png`);
     }
 })
 

@@ -186,20 +186,26 @@ controller.formBE = (req, res) => {
 
                                             if(stockdb.stock <= 0){
                                             
-                                            console.log('lo siento no hay mas ' + stockdb.name);
+                                            console.log('lo siento no hay mas de ' + stockdb.name);
                                             
                                             estadoError = false;
 
                                             numberC--;
+                                                console.log("stockdb name: " + stockdb);
+                                            
+                                                Stock.find({}, (err, docs) => {
+                    
+                                                const documents = docs;
 
-                                            res.render('formulario', {
+                                                res.render('formulario', {
                                                 'sendAlert': true,
                                                 'success': false,
                                                 'estadoStock': 2,
                                                 'herramienta': stockdb.name,
-                                                'data': stockdb
+                                                'data': documents
                                             });
 
+                                        });
                                         } 
                                         
                                         if(cantTools <= stockdb.stock) {
@@ -256,13 +262,13 @@ controller.formBE = (req, res) => {
                                                     
                                                     Stock.find({}, (err, docs) => {
                     
-                                                        const documents = docs;
+                                                    const documents = docs;
 
                                                     res.render('formulario', {
                                                         'sendAlert': false,
                                                         'success': true,
                                                         'estadoStock': 0,
-                                                        'herramienta': '',
+                                                        'herramienta': stockdb.name,
                                                         'data': documents
                                                     });
 
@@ -271,29 +277,26 @@ controller.formBE = (req, res) => {
                                                     } // fin if length herramientas
                                                     
 
-                                                
-                                          
-
-
-
-
-
-
-
-
-
-
                                             } 
                                         } else {
-                                            console.log('estas pidiendo mas de lo que hay');
 
-                                            res.render('formulario', {
-                                                'sendAlert': true,
-                                                'success': false,
-                                                'estadoStock': 1,
-                                                'herramienta': stockdb.name,
-                                                'data': stockdb
+                                            console.log('estas pidiendo mas de lo que hay formulario manual');
+
+                                            Stock.find({}, (err, docs) => {
+                    
+                                                const documents = docs;
+
+                                                res.render('formulario', {
+                                                    'sendAlert': true,
+                                                    'success': false,
+                                                    'estadoStock': 1,
+                                                    'herramienta': stockdb.name,
+                                                    'data': documents
+                                                });
+
+                                                // console.log(documents[1].name);
                                             });
+                                            
                                             
                                         }
                                           
@@ -308,21 +311,9 @@ controller.formBE = (req, res) => {
                     
                 });
 
-
-
-
-
-                
-               
                 console.log(status);
                 
 
-
-
-
-
-
-                
             } else {
                 console.log("INFORMACION INCORRECTA");
                 
@@ -378,7 +369,7 @@ controller.formulario = async (req, res) => {
     console.log(toolsData);
     
     Stock.find({}, (err, docs) => {
-                    
+
         const documents = docs;
     
         res.render('formulario', {
@@ -707,20 +698,22 @@ controller.herramientasPost = (req, res) => {
             -----------------------------------
             `
             );
-        
-       
+    
+
+
             const oldDocument = await Formulario.updateOne(filter,
                 {
                 $push:  update
                 });
             ;
-            const stockUpdate = await Stock.updateOne({idJSON}, {
+            const stockUpdate = await Stock.updateOne({identificador: idJSON}, {
                 
                 $inc: {stock: - cantForm}
-            
+                
             });
             
-        
+            console.log('actualize la id numero: ' + idJSON);
+
               res.redirect(`/codigo-de-barras/herramientas/${idUpdate}/success/${toolName}/0`);
             } else if(document[0].stock === 0){
                 console.log('No hay mas stock, esta en 0');
@@ -768,7 +761,8 @@ controller.stock = (req, res) => {
         const docs = doc;
 
         res.render('stock', {
-            stockdb: doc
+            stockdb: doc,
+            alert: 0
         });
     })
 }
@@ -931,10 +925,30 @@ controller.sendTool = (req, res) => {
         
 
         console.log('HERRAMIENTA CREADA');
-        res.redirect('/stock/add');
+        
+        Stock.find({}, (err, doc) => {
+        const docs = doc;
+
+        res.render('stock', {
+            stockdb: doc,
+            alert: 1,
+            herramienta: herramienta
+        });
+
+    })
+
     } else {
         console.log('HERRAMIENTA NO CREADA');
-        res.render('stock');
+        Stock.find({}, (err, doc) => {
+            const docs = doc;
+    
+            res.render('stock', {
+                stockdb: doc,
+                alert: 2,
+                herramienta: herramienta
+            });
+    
+        })
     }
 
 }
@@ -959,6 +973,18 @@ controller.sendTool = (req, res) => {
 
     if(verificacion) {
         console.log('La herramienta Ya existe');
+        
+        Stock.find({}, (err, doc) => {
+            const docs = doc;
+    
+            res.render('stock', {
+                stockdb: doc,
+                alert: 2,
+                herramienta: herramienta
+            });
+    
+        })
+
     } else {
         CreateTool();
     }
@@ -976,6 +1002,26 @@ controller.sendTool = (req, res) => {
         let codigo = req.body.codigo;
 
         let file = req.body.file;
+
+        if(stockParam > 0 && herramienta != '' && herramienta.length >= 4) {
+
+            Stock.updateOne({ name: req.params.name },
+                { total: stockParam, stock: stockParam, name: herramienta }, function (err, docs) {
+                    if (err){
+
+                        console.log(err);
+    
+                    } else {
+
+                        
+
+                        console.log("Updated Docs : ", docs);
+                    
+                    }
+
+                });
+
+        }
 
         if(stockParam > 0 ) {
             

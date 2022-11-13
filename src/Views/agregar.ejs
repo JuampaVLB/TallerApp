@@ -18,8 +18,15 @@
             <img src="/img/logo.png" alt="LOGO" class="logo">
                 <ul class="navbar-list">
                     <li> <a href="/inicio">Inicio</a> </li>
-                    <li> <a href="/">Estadisticas</a> </li>
+                    <li> <a href="/stock">Stock</a> </li>
                     <li> <a href="/facturas">Facturas</a> </li>
+                    <li class="mostrar">
+                        <a href="#" class="active">Peticiones</a>
+                        <div class="submenu">
+                            <a href="/codigo-de-barras/null" class="active">Codigo De Barras</a>
+                            <a href="/formulario">Formulario Manual</a>
+                        </div>
+                    </li>
                 </ul>
             </navbar>
         </header>
@@ -29,19 +36,23 @@
 
             <h1>Agregar Herramienta</h1>
                 <form action="/herramientasPost/<%= id %> " method="POST">
-                    <input type="number" required name="codigo">
-                    <input type="number" required name="cantidad" value="1">
-                    <input type="submit" value="enviar">
+                    <input type="number" required name="codigo" placeholder="Codigo De Barras">
+                    <input type="number" required name="cantidad" value="1" placeholder="Cantidad">
+                    <input type="submit" value="Enviar">
                 </form>
         
             <a href="/codigo-de-barras/null" class="btn-finish">Finalizar Pedido</a>
     
         </main>
 
+        <img src="/img/logo2.png" alt="LOGO" class="image">
+
     </div>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    </body>
+    </html>
     <% if (estado === 'error') { %>
         
         <script>
@@ -62,20 +73,24 @@
     <% } if (estado === 'success'){ %>
        
         <script>
-           
+           // url(/img/tools/<%= tool.toLowerCase(); %>.png) center no-repeat'
            function Success() {
    
                 Swal.fire({
-                //background: '#fff url(/img/tools/amoladora.png) bottom no-repeat',
-                backdrop: `
-                rgba(256,256,256)
-                url(/img/tools/<%= tool.toLowerCase(); %>.png)
-                center right
-                no-repeat
-                `,
-                title: 'ENVIADO',
-                text: 'HERRAMIENTA AGREGADA',
-                icon: 'success'
+                imageUrl: '/img/tools/<%= tool.toLowerCase(); %>.png',
+                background: '#fff',
+                // backdrop: `
+                // rgba(256,256,256)
+                // url(/img/tools/<%= tool.toLowerCase(); %>.png)
+                // center right
+                // no-repeat
+                // `,
+                imageWidth: '200px',
+                title: 'Herramienta enviada',
+                icon: 'success',
+                confirmButtonColor: '#00aae4',
+                confirmButtonText: 'CONFIRMADO',
+                iconColor: '#00aae4'
                 });
     
             }
@@ -92,7 +107,7 @@
                 
                 Swal.fire({
           title: 'SIN STOCK',
-          text: 'YA NO HAY MAS STOCK DE <%= tool[0].toUpperCase(); %>',
+          text: 'YA NO HAY MAS STOCK DE <%= tool.toUpperCase(); %>',
           showCancelButton: true,
           cancelButtonText: 'CANCELAR',
           confirmButtonText: 'IR AL STOCK',
@@ -131,7 +146,5 @@
 
         </script>
 
-    <% } %> 
-
-</body>
-</html>
+    <% } %>
+ 

@@ -10,6 +10,7 @@
     font-family: 'Josefin Sans', sans-serif;
     width: 100%;
     height: 100vh;
+    position: relative;
 }
 
 #container #header {
@@ -47,13 +48,42 @@
 	text-decoration: none;
 	color: #000;
 	margin-left: .5rem;
+    transition: .2s;
+    font-weight: bold;
+}
+
+#container #header .navbar .navbar-list .active {
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list li a:hover {
+	transition: .2s;
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list .mostrar:hover .submenu{
+	display:flex;
+}
+
+#container #header .navbar .navbar-list .submenu {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+    position:absolute;
+    overflow:hidden;
+	background-color:#fff;
+	display:none;
+    width:200px;
+	height: 100px;
+	background: white;
+	box-shadow: 2px 1px 5px black;
 }
 
 #container #main {
     width: 100%;
     height: calc(100vh - 4.5rem);
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 
 }
@@ -67,17 +97,12 @@
     border-radius: 15px;
     width: 30%;
     padding-bottom: 1rem;
-    height: 450px;
+    height: 550px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 1px 1px 20px black;
-}
+    z-index: 999;
 
-/* #container #main form input {
-    width: 90%;
-    height: 45px;
-    outline: none;
-    padding: 15px;
-} */
+}
 
 .input-wrapper {
     margin-top: 2rem;
@@ -88,10 +113,50 @@
   
   .input-wrapper h1 {
     color: #00aae4;
-    margin-top: 0;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid gray;
+    padding-bottom: 25px;
+    position: relative;
   }
+
+  .input-wrapper h1::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 5px;
+    background: black;
+    bottom: 0;
+}
+
+.input-wrapper .input:focus {
+  border-color: #00aae4;
+  outline: 0;
+  box-shadow: inset 0 1px 1px #00aae4, 0 0 8px #00aae4;
+}
+
+  /* .input-wrapper h1 {
+    color: #00aae4;
+    width: fit-content;
+    white-space: nowrap;
+    position: relative;
+    border-left: 5px solid black;
+    border-bottom: 5px solid black;
+  }
+
+  .input-wrapper h1::before {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 5px;
+      background: black;
+      top: 0;
+  } */
+
+
+
+
+
+
+
+
 
   .input {
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -105,7 +170,7 @@
   .input-wrapper .input:focus {
     border-color: #00aae4;
     outline: 0;
-    box-shadow: inset 0 1px 1px #00aae4, 0 0 8px #00aae4;
+
   }
   
   .input.general {
@@ -133,18 +198,10 @@
 
   .input-wrapper .submit {
     background: #00aae4;
-    background: radial-gradient(ellipse farthest-corner at left top, #00aae4 30%, #1919e6 100%);
-    border: none;
     color: white;
     font-weight: bold;
-    transition: box-shadow 500ms ease;
+    border: none;
   }
-
-  .input-wrapper .submit:hover {
-    box-shadow: 0 7px 30px #00aae4;
-    transition: box-shadow 500ms ease;
-  }
-
 
   @media (min-width: 1250px) {
     #container #main form {

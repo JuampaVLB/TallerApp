@@ -11,7 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+SA+Beginner&family=Josefin+Sans&family=Oswald&display=swap" rel="stylesheet">
 
 	<title>Pañol/Inicio</title>
-	    <link rel="stylesheet" href="./css/inicio.css">
+	
+    <link rel="stylesheet" href="./css/inicio.css">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    
 </head>
 <body>
 
@@ -20,11 +27,16 @@
 				<navbar class="navbar">
 				<img src="./img/logo.png" alt="LOGO" class="logo">
 					<ul class="navbar-list">
-						<li> <a href="/inicio">Inicio</a> </li>
-                        <li> <a href="/estadisticas">Estadisticas</a> </li>
+						<li> <a href="/inicio" class="active">Inicio</a> </li>
                         <li> <a href="/stock">Stock</a> </li>
 						<li> <a href="/facturas">Facturas</a> </li>
-                        <li> <a href="/stock/add">Agregar</a> </li>
+                        <li class="mostrar">
+                            <a href="#">Peticiones</a>
+                            <div class="submenu">
+                                <a href="/codigo-de-barras/null">Codigo De Barras</a>
+                                <a href="/formulario">Formulario Manual</a>
+                            </div>
+                        </li>
 					</ul>
 				</navbar>
 		</header>
@@ -34,10 +46,9 @@
      <div class="body__page">
      	<div class="container__card">
 
-            <div class="card_c1">
+            <div class="card_c1 animate__animated animate__fadeIn">
                 <div class="icon">
                     <img src="./img/barcode.png">
-                    
                 </div>
                 <div class="info__description">
                     <h2>Lector De Barras</h2>
@@ -46,7 +57,7 @@
                 </div>
             </div>
 
-        <div class="card_c2">
+        <div class="card_c2 animate__animated animate__fadeIn">
                 <div class="icon">
                     <img src="./img/formulario.png">
                 </div>

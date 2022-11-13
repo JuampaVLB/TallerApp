@@ -21,8 +21,15 @@
     <img src="./img/logo.png" alt="LOGO" class="logo">
         <ul class="navbar-list">
             <li> <a href="/inicio">Inicio</a> </li>
-            <li> <a href="/">Estadisticas</a> </li>
+            <li> <a href="/stock">Stock</a> </li>
             <li> <a href="/facturas">Facturas</a> </li>
+            <li class="mostrar">
+              <a href="#" class="active">Peticiones</a>
+              <div class="submenu">
+                  <a href="/codigo-de-barras/null">Codigo De Barras</a>
+                  <a href="/formulario" class="active">Formulario Manual</a>
+              </div>
+          </li>
         </ul>
     </navbar>
 </header>
@@ -42,15 +49,22 @@
 <!--FORMULARIO--> 
 <div class = "table-div"> 
 
-    <% data.forEach(element => { %>
+    <% 
+      data.forEach(element => { 
+        
+      var firsLetter = element.name.toUpperCase();
+
+      var endWord = element.name.slice(1, element.name.length);
+      
+    %>
        
         <div class="tarjeta">
           <section class="imagen">
-            <img src="/img/tools/<%=element.name%>.png" alt="<%= element.name %> " onclick="addImage('<%= element.name %>');">
+            <img src="/img/tools/<%=element.name%>.png" alt=" " onclick="addImage('<%= element.name %>');">
           </section>
           <section class="informacion_tarjeta">
             <input type="number" name="tools[]">
-            <p class="nombre_herramienta"><%= element.name %></p>
+            <p class="nombre_herramienta"><%= firsLetter[0] + endWord %></p>
           </section>
         </div>
 

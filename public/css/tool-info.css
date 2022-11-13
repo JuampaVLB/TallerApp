@@ -11,6 +11,10 @@
     width: 100%;
 }
 
+.arrow-back {
+  width: 24px;
+}
+
 #container #header {
 	width: 100%;
 	height: 4.5rem;
@@ -28,7 +32,7 @@
 }
 
 #container #header .navbar .logo {
-	width: 45px;
+	  width: 45px;
     cursor: pointer;
 }
 
@@ -46,6 +50,35 @@
 	text-decoration: none;
 	color: #000;
 	margin-left: .5rem;
+	transition: .2s;
+  font-weight: bold;
+}
+
+#container #header .navbar .navbar-list .mostrar:hover .submenu{
+	display:flex;
+}
+
+#container #header .navbar .navbar-list .submenu {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+    position:absolute;
+    overflow:hidden;
+	background-color:#fff;
+	display:none;
+    width:200px;
+	height: 100px;
+	background: white;
+	box-shadow: 2px 1px 5px black;
+}
+
+#container #header .navbar .navbar-list li a:hover {
+	transition: .2s;
+	color: #00aae4;
+}
+
+#container #header .navbar .navbar-list .active {
+	color: #00aae4;
 }
 
 #container #main {
@@ -57,7 +90,7 @@
 #container #main .content {
     width: 100%;
     height: 100%;
-    background: lightgray; 
+    background: rgba(0, 0, 0, .2); 
 }
 
 #container #main .content .top {
@@ -70,6 +103,7 @@
 
 #container #main .content .top p {
     font-size: 2rem;
+    font-weight: bold;
 }
 
 #container #main .content .top button {
@@ -109,8 +143,8 @@
 
 #container #main .content .cards .card {
     background-color: #fff;
-    height: 160px;
-    width: 350px;
+    height: 200px;
+    width: 90%;
     padding: 0 3em;
     border: 1px solid #ede8f0;
     border-radius: 5px;
@@ -119,6 +153,35 @@
     align-items: center;
     border: 1px solid gray;
     position: relative;
+    box-shadow: 1px 1px 10px black;
+    position: relative;
+} 
+
+#container #main .content .cards .card .btn-download {
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(4rem);
+  border: 0;
+  margin: 0;
+  cursor: pointer;
+  background:#0275d8;
+  color: #fff;
+  width: auto;
+  height: 2.5em;
+  padding: 0 2.25em;
+  border-radius: 3.5em;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: .15s ease;
+  transition: .3s ease;
+}
+
+#container #main .content .cards .card .btn-download:hover {
+  background-color: black;
+  transition: .3s ease;
 }
 
 #container #main .content .cards .card svg{
@@ -130,10 +193,14 @@
   z-index: 645;
   position: absolute;
 }
-
+#container #main .content .cards .card:nth-child(5) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #container #main .content .cards .card #barcode {
   z-index: 78;
-  margin-left: -1.5rem;
+  margin: 0;
 }
 
 #container #main .content .cards .card .download-barcode {
@@ -148,11 +215,16 @@
 
 #container #main .content .cards .card p:nth-child(1) {
     color: #000;
-    font-size: 2rem;
+    font-size: 3rem;
+}
+
+#container #main .content .cards .card p:nth-child(1)::first-letter {
+  text-transform: uppercase;
 }
 
 #container #main .content .cards .card p:nth-child(2) {
     color: #4b84fe;
+    font-size: 1.1rem;
 }
 
 
@@ -179,6 +251,9 @@
 }
 
 #edit-form div form {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Edu SA Beginner', cursive;
+    font-family: 'Josefin Sans', sans-serif;
     position: relative;
     border: 1px solid rgba(0, 0, 0, 0.6);
     box-shadow: 1px 1px 15px black;
@@ -203,7 +278,17 @@
     color: #00aae4;
     margin-top: 0;
     padding-bottom: 1rem;
-    border-bottom: 1px solid gray;
+    border: none;
+    position: relative;
+  }
+
+  .input-wrapper h1::before {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 5px;
+      background: black;
+      bottom: 0;
   }
 
   .input {
@@ -219,10 +304,6 @@
     border-color: #00aae4;
     outline: 0;
     box-shadow: inset 0 1px 1px #00aae4, 0 0 8px #00aae4;
-  }
-  
-  .input.general {
-    /* padding: 15px 15px 15px 15px; */
   }
   
   .input-icon {
@@ -246,16 +327,9 @@
 
   .input-wrapper .submit {
     background: #00aae4;
-    background: radial-gradient(ellipse farthest-corner at left top, #00aae4 30%, #1919e6 100%);
     border: none;
     color: white;
     font-weight: bold;
-    transition: box-shadow 500ms ease;
-  }
-
-  .input-wrapper .submit:hover {
-    box-shadow: 0 7px 30px #00aae4;
-    transition: box-shadow 500ms ease;
   }
 
   #btn-close {

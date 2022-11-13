@@ -19,13 +19,20 @@
             <img src="/img/logo.png" alt="LOGO" class="logo">
                 <ul class="navbar-list">
                     <li> <a href="/inicio">Inicio</a> </li>
-                    <li> <a href="/estadisticas">Estadisticas</a> </li>
-                    <li> <a href="/stock">Stock</a> </li>
+                    <li> <a href="/stock" class="active">Stock</a> </li>
                     <li> <a href="/facturas">Facturas</a> </li>
+                    <li class="mostrar">
+                        <a href="#">Peticiones</a>
+                        <div class="submenu">
+                            <a href="/codigo-de-barras/null">Codigo De Barras</a>
+                            <a href="/formulario">Formulario Manual</a>
+                        </div>
+                    </li>
                 </ul>
             </navbar>
         </header>
         <main id="main">
+            <img src="/img/tool-box.png" alt="LOGO" class="image">
             <form action="/stock/add/send" method="post">
                 <div class="input-wrapper">
                     <h1>Agregar Herramienta</h1>
